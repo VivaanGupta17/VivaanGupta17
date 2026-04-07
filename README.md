@@ -17,70 +17,82 @@
 
 ### About Me
 
-Biomedical engineering and computer science student at Johns Hopkins building deep learning systems for regulated clinical environments. My work spans medical image segmentation, surgical video analysis, cardiac signal processing, drug discovery, and clinical NLP — with a consistent focus on FDA-ready evaluation methodology, demographic bias analysis, and production deployment.
+Biomedical engineering and computer science student at Johns Hopkins building deep learning systems for regulated clinical environments. My work spans medical image segmentation, self-supervised pretraining, radiology report generation, surgical video analysis, imitation learning for surgical robots, cardiac signal processing, wearable health, digital pathology, drug discovery, clinical NLP, ICU monitoring, and FDA-compliant MLOps.
 
-Every project includes detailed `RESULTS.md` documentation with methodology, benchmarks against published baselines, ablation studies, and clinical context.
+Every project includes a detailed **RESULTS.md** with methodology, benchmarks against published baselines, ablation studies, and clinical context. Start there.
 
 ---
 
-### Featured Projects
-
-#### Medical Imaging & Surgical AI
+### Medical Imaging & Reconstruction
 
 | Project | Description | Key Results | Stack |
 |---------|-------------|-------------|-------|
-| [**MedSeg Pipeline**](https://github.com/VivaanGupta17/medseg-pipeline) | U-Net & Attention U-Net for brain tumor segmentation on BraTS with DICOM preprocessing and Grad-CAM explainability | WT Dice 0.901, TC 0.834, ET 0.798 | PyTorch · pydicom · NIfTI |
-| [**SurgPhase**](https://github.com/VivaanGupta17/surgical-phase-recognition) | Real-time surgical phase recognition & instrument detection on Cholec80 using MS-TCN++ and Transformers | 92.1% accuracy, 42 FPS, mAP 0.847 | PyTorch · ONNX · TensorRT |
-| [**VSP-3D**](https://github.com/VivaanGupta17/vsp-3d-reconstruction) | AI-powered virtual surgical planning — DICOM → 3D segmentation → mesh → osteotomy planning → 3D-printable guides | Mandible Dice 0.952, 12 min vs 3 weeks | PyTorch · VTK · SimpleITK |
+| [**MedSeg Pipeline**](https://github.com/VivaanGupta17/medseg-pipeline) | U-Net & Attention U-Net for brain tumor segmentation on BraTS | WT Dice 0.901, TC 0.834, ET 0.798 | PyTorch · pydicom · NIfTI |
+| [**MedFM**](https://github.com/VivaanGupta17/medfm) | Self-supervised foundation models (SimCLR, MoCo v3, MAE) pretrained on chest X-rays | MAE 1%-label AUROC 0.742 vs 0.572 random | PyTorch · ViT · timm |
+| [**RadReport-VL**](https://github.com/VivaanGupta17/radreport-vl) | Vision-language model for automated radiology report generation | BLEU-4 0.142, 12.4% hallucination rate | PyTorch · BioGPT · MIMIC-CXR |
+| [**MRI-DiffRecon**](https://github.com/VivaanGupta17/mri-diffusion-recon) | Score-based diffusion models for accelerated MRI reconstruction | SSIM 0.942 at 4x, 98.2% pathology preserved | PyTorch · fastMRI · SDE |
+| [**PathAI**](https://github.com/VivaanGupta17/pathai) | MIL for whole slide image analysis — cancer detection on Camelyon16 | TransMIL AUROC 0.961, FROC 0.846 | PyTorch · OpenSlide · CLAM |
 
-#### Cardiac & Wearable AI
-
-| Project | Description | Key Results | Stack |
-|---------|-------------|-------------|-------|
-| [**CardioAI**](https://github.com/VivaanGupta17/cardio-ai) | 12-lead ECG arrhythmia detection with multi-sensor fusion and 6-mechanism alert fatigue reduction | AUROC 0.953, 70.6% false alarm reduction | PyTorch · SciPy · PhysioNet |
-| [**GlucoCast**](https://github.com/VivaanGupta17/glucocast) | CGM glucose forecasting with Temporal Fusion Transformers — hypoglycemia prevention with Clarke Error Grid validation | 11.6 RMSE (30-min), 97.3% Zone A+B | PyTorch · OhioT1DM |
-
-#### Drug Discovery & Pharma AI
+### Surgical AI & Robotics
 
 | Project | Description | Key Results | Stack |
 |---------|-------------|-------------|-------|
-| [**MolProp-GNN**](https://github.com/VivaanGupta17/molprop-gnn) | Graph neural networks for ADMET property prediction with scaffold-split evaluation and atom-level interpretability | HIV AUROC 0.793, scaffold split analysis | PyG · RDKit · Optuna |
-| [**TrialPredictor**](https://github.com/VivaanGupta17/trial-predictor) | Clinical trial outcome prediction with portfolio NPV simulation — predicting Phase II/III success from compound + trial features | AUROC 0.714, +$1.4B eNPV lift | XGBoost · DeepSurv · SHAP |
+| [**SurgPhase**](https://github.com/VivaanGupta17/surgical-phase-recognition) | Real-time surgical phase recognition & instrument detection on Cholec80 | 92.1% accuracy, 42 FPS, mAP 0.847 | PyTorch · ONNX · TensorRT |
+| [**VSP-3D**](https://github.com/VivaanGupta17/vsp-3d-reconstruction) | AI-powered virtual surgical planning — CT → 3D segmentation → osteotomy → 3D-printable guides | Mandible Dice 0.952, 12 min vs 3 weeks | PyTorch · VTK · SimpleITK |
+| [**SurgBot-IL**](https://github.com/VivaanGupta17/surgbot-il) | Imitation learning for surgical robots — BC, DAgger, Diffusion Policy, VLA models | Diffusion Policy 84.7% suturing success | PyTorch · JIGSAWS · Gym |
 
-#### Clinical NLP & MLOps
+### Cardiac, Wearable & ICU AI
 
 | Project | Description | Key Results | Stack |
 |---------|-------------|-------------|-------|
-| [**ClinicalRAG**](https://github.com/VivaanGupta17/clinical-nlp-rag) | RAG pipeline for biomedical literature with hallucination detection, biomedical NER, and HIPAA-compliant clinical text processing | 8.3% hallucination rate (vs 24.1% no-RAG) | PubMedBERT · FAISS · ScispaCy |
-| [**MedML-Ops**](https://github.com/VivaanGupta17/medml-ops) | FDA-compliant MLOps with GMLP checklist automation, PCCP model versioning, bias monitoring, and drift detection | 10/10 GMLP principles automated | MLflow · FastAPI · Docker |
+| [**CardioAI**](https://github.com/VivaanGupta17/cardio-ai) | 12-lead ECG arrhythmia detection with multi-sensor fusion and alert fatigue reduction | AUROC 0.953, 70.6% false alarm reduction | PyTorch · SciPy · PTB-XL |
+| [**GlucoCast**](https://github.com/VivaanGupta17/glucocast) | CGM glucose forecasting with Temporal Fusion Transformers | 11.6 RMSE (30-min), 97.3% Clarke A+B | PyTorch · OhioT1DM |
+| [**ICU-Anomaly**](https://github.com/VivaanGupta17/icu-anomaly) | ICU time-series anomaly detection — sepsis prediction, mortality, early warning | Sepsis AUROC 0.847, 1.8 alarms/day | PyTorch · MIMIC-III |
 
-#### Other Projects
+### Drug Discovery & Pharma AI
+
+| Project | Description | Key Results | Stack |
+|---------|-------------|-------------|-------|
+| [**MolProp-GNN**](https://github.com/VivaanGupta17/molprop-gnn) | Graph neural networks for ADMET molecular property prediction | HIV AUROC 0.793, scaffold split analysis | PyG · RDKit · Optuna |
+| [**TrialPredictor**](https://github.com/VivaanGupta17/trial-predictor) | Clinical trial outcome prediction with portfolio NPV simulation | AUROC 0.714, +$1.4B eNPV lift | XGBoost · DeepSurv · SHAP |
+
+### Clinical NLP & MLOps
+
+| Project | Description | Key Results | Stack |
+|---------|-------------|-------------|-------|
+| [**ClinicalRAG**](https://github.com/VivaanGupta17/clinical-nlp-rag) | RAG for biomedical literature with hallucination detection and biomedical NER | 8.3% hallucination (vs 24.1% no-RAG) | PubMedBERT · FAISS · ScispaCy |
+| [**MedML-Ops**](https://github.com/VivaanGupta17/medml-ops) | FDA-compliant MLOps — GMLP automation, PCCP versioning, bias monitoring, drift detection | 10/10 GMLP principles automated | MLflow · FastAPI · Docker |
+
+### Other Projects
 
 | Project | Description | Stack |
 |---------|-------------|-------|
-| [**Aurexon**](https://github.com/VivaanGupta17/aurexon) | Medtech asset intelligence platform — ML-powered due diligence with 9-stage analysis pipeline | React · TypeScript · Express |
-| [**HRV-TBI**](https://github.com/Rapuris/HRV_TBI) | TBI subphenotype identification through heart rate variability clustering on MIMIC-III | Python · R · scikit-learn |
+| [**Aurexon**](https://github.com/VivaanGupta17/aurexon) | Medtech asset intelligence platform with 9-stage ML analysis pipeline | React · TypeScript · Express |
+| [**HRV-TBI**](https://github.com/Rapuris/HRV_TBI) | TBI subphenotype identification through HRV clustering on MIMIC-III | Python · R · scikit-learn |
 
 ---
 
 ### Technical Focus Areas
 
 ```
-Medical Imaging          ██████████████████░░  Segmentation, 3D reconstruction, DICOM/NIfTI, Grad-CAM
-Surgical AI              ████████████████░░░░  Phase recognition, instrument detection, VSP, real-time inference
-Cardiac & Wearable AI    ████████████████░░░░  ECG classification, CGM prediction, HRV, alert fatigue reduction
-Drug Discovery ML        ██████████████░░░░░░  GNNs, ADMET prediction, clinical trial outcomes, portfolio NPV
-Clinical NLP             ██████████████░░░░░░  RAG, biomedical NER, hallucination detection, HIPAA compliance
-MLOps & Regulatory       ██████████████████░░  FDA GMLP, PCCP, bias monitoring, drift detection, model lifecycle
+Medical Imaging          ██████████████████████  Segmentation, foundation models, report generation, diffusion recon
+Digital Pathology        ████████████████░░░░░░  Whole slide images, MIL, cancer detection, stain normalization
+Surgical AI & Robotics   ████████████████████░░  Phase recognition, VSP, imitation learning, VLA, diffusion policy
+Cardiac & Wearable AI    ██████████████████░░░░  ECG, CGM prediction, HRV, multi-sensor fusion, alert fatigue
+ICU & Clinical Monitoring████████████████░░░░░░  Sepsis prediction, early warning, anomaly detection, MIMIC
+Drug Discovery ML        ██████████████░░░░░░░░  GNNs, ADMET, clinical trials, portfolio NPV simulation
+Clinical NLP             ██████████████░░░░░░░░  RAG, biomedical NER, hallucination detection, HIPAA
+MLOps & Regulatory       ██████████████████░░░░  FDA GMLP, PCCP, bias monitoring, drift detection, lifecycle
 ```
 
 ---
 
 ### Tools & Frameworks
 
-**ML/DL:** PyTorch · PyTorch Geometric · scikit-learn · XGBoost · ONNX · TensorRT · MONAI  
+**ML/DL:** PyTorch · PyTorch Geometric · scikit-learn · XGBoost · ONNX · TensorRT · MONAI · timm  
 **Medical:** pydicom · SimpleITK · VTK · NIfTI · RDKit · PhysioNet · OpenSlide · ScispaCy  
-**NLP/LLM:** PubMedBERT · FAISS · ChromaDB · Hugging Face Transformers  
+**NLP/LLM:** PubMedBERT · BioGPT · FAISS · ChromaDB · Hugging Face Transformers  
+**Vision:** ViT · SimCLR · MoCo · MAE · CLAM · TransMIL · Diffusion Models  
 **MLOps:** MLflow · Docker · FastAPI · Evidently AI · Great Expectations  
 **Languages:** Python · C · JavaScript/TypeScript · SQL · R  
 **Platforms:** AWS · NVIDIA CUDA · JHU Rockfish HPC · GitHub Actions
